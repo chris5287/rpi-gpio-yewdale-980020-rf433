@@ -26,13 +26,16 @@ if __name__ == '__main__':
     # Capture target blind and action to perform.
     blind = sys.argv[1]
     action = sys.argv[2]
+    open_percentage = 0
 
     # Set codes to execute.
     if blind == 'livingroom_left':
         if action == 'up_step':
             codes = ["5CC7C7ADFEFFF431", "5CC7C7ADFEFFDB18"]
+            open_percentage = 100
         elif action == 'up':
             codes = ["5CC7C7ADFEFFF431", "5CC7C7ADFEFFF431", "5CC7C7ADFEFF74B1"]
+            open_percentage = 100
         elif action == 'stop':
             codes = ["5CC7C7ADFEFFDC19"]
         elif action == 'down_step':
@@ -45,8 +48,10 @@ if __name__ == '__main__':
     elif blind == 'livingroom_right':
         if action == 'up_step':
             codes = ["5CC7C7A6FEFFF42A", "5CC7C7A6FEFFDB11"]
+            open_percentage = 100
         elif action == 'up':
             codes = ["5CC7C7A6FEFFF42A", "5CC7C7A6FEFFF42A", "5CC7C7A6FEFF74AA"]
+            open_percentage = 100
         elif action == 'stop':
             codes = ["5CC7C7A6FEFFDC12"]
         elif action == 'down_step':
@@ -116,3 +121,6 @@ if __name__ == '__main__':
 
     # Cleanup GPIO for next usage.
     GPIO.cleanup()
+
+    # Print open percentage for Homebridge integration.
+    print(open_percentage)
